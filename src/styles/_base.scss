@@ -1,0 +1,39 @@
+body {
+  font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #fdfdfd;
+  font-size: 13px;
+  color: #2a2a2a;
+  overflow-x: hidden;
+
+}
+
+html, body {
+  height: 100%;
+
+}
+
+// Order item list
+.form-list{ 
+	order-item{ display: inline-block;  vertical-align: top;}
+	.form-grp { 
+		display: inline-block; vertical-align: top; width: 19%; margin-right: 0.5%;
+		.form-control{
+			    width: 100%;
+		}
+	}
+	.button-remove{ 
+		display: inline-block;
+	    margin: 20px 0px 0px 0px;
+	    padding: 0px;
+	    border-radius: 50%;
+	    height: 25px;
+	    width: 25px;
+	    text-align: center;
+	    line-height: 15px;
+	}
+	
+}
+.hasError{ color: red;}
+.order-total{ width: 200px; float: right;}
+.add-row { width: 200px; float: left; height: 50px}
+.clearfix{ clear:both;}
