@@ -1,24 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { JsonpModule } from '@angular/http';
-import {NgModule,ApplicationRef} from '@angular/core';
-import {  FormsModule, ReactiveFormsModule }          from '@angular/forms';
-import { CommonModule }                             from '@angular/common';
-import {removeNgStyles, createNewHosts,createInputTransfer} from '@angularclass/hmr';
-import {RouterModule, PreloadAllModules} from '@angular/router';
+import {NgModule, ApplicationRef} from '@angular/core';
+import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import {removeNgStyles, createNewHosts, createInputTransfer} from '@angularclass/hmr';
+
 
 /*
  * Platform and Environment providers/directives/pipes
  */
 import { ENV_PROVIDERS } from './environment';
-import { ROUTES } from './app.routes';
+import { AppRoutingModule } from './app.routes';
 
 /* App is our top level component  */
 import { AppComponent }      from './app.component';
-import {orderFormComponent} from './orders/order-form.component.ts';
-import {orderItemComponent} from './orders/order-item.component.ts';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType }  from './app.service';
+import { OrderModule } from './orders/order.module';
+
+
 
 import '../styles/styles.scss';
 import '../styles/bootstrap.css';
@@ -38,20 +39,24 @@ type StoreType = {
   disposeOldHosts: () => void
 };
 
-/**
- * `AppModule` is the main entry point into Angular2's bootstraping process
- */
 @NgModule({
   bootstrap: [ AppComponent ],
   declarations: [
-    AppComponent,orderFormComponent , orderItemComponent
+    AppComponent,
   ],
-  imports: [ // import Angular's modules
-    BrowserModule,  FormsModule, ReactiveFormsModule,
-    HttpModule, JsonpModule, ReactiveFormsModule ,
-    RouterModule.forRoot(ROUTES, { useHash: false, preloadingStrategy: PreloadAllModules })
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpModule,
+    JsonpModule,
+    ReactiveFormsModule,
+    OrderModule,
   ],
-  providers: [ ENV_PROVIDERS, APP_PROVIDERS 
+  providers: [
+      ENV_PROVIDERS,
+      APP_PROVIDERS
   ],
 
 })

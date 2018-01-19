@@ -1,13 +1,20 @@
-import { Routes } from '@angular/router';
-import { HomeComponent } from './home';
-
-import { DataResolver } from './app.resolver';
-
-export const ROUTES: Routes = [
-/*
-//  { path: '',      component: HomeComponent },
- { path: 'home',  component: HomeComponent },
-  { path: 'about', component: AboutComponent },
-{ path: 'section', component: SectionComponent },
-*/
+import { NgModule } from '@angular/core';
+import {
+    Routes,
+    RouterModule,
+    Router,
+} from '@angular/router';
+const ROUTES: Routes = [
+    {
+        path: '',
+        loadChildren: './orders/order.module#OrderModule',
+    },
+    {
+        path: '**', redirectTo: '/'
+    }
 ];
+@NgModule({
+    imports: [RouterModule.forRoot(ROUTES)],
+    exports: [RouterModule]
+})
+export class AppRoutingModule {}
